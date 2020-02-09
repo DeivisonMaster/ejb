@@ -1,5 +1,7 @@
-<datasource jndi-name="java:/livrariaDS" pool-name="livrariaDS" enabled="true" use-java-context="true">
-                    <connection-url>jdbc:mysql://localhost:3306/livrariadb</connection-url>
+1. DATASOURCE:
+
+<datasource jndi-name="java:/NAME_PROJECT" pool-name="NAME_PROJECT" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://localhost:3306/DB_PROJECT</connection-url>
                     <driver>com.mysql</driver>
                     <pool>
                         <min-pool-size>10</min-pool-size>
@@ -7,20 +9,23 @@
                         <prefill>true</prefill>
                     </pool>
                     <security>
-                        <user-name>master</user-name>
-                        <password>matos132739</password>
+                        <user-name>user</user-name>
+                        <password>password</password>
                     </security>
 </datasource>
-                
-                
-                
-                
+
+
+######################################################################################################
+
+2. DRIVER: 
+
 <driver name="com.mysql" module="com.mysql">
      <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
-</driver>         
+</driver>   
 
+######################################################################################################
 
-
+3. MODULE:
 
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.0" name="com.mysql">
@@ -30,4 +35,12 @@
   <dependencies>
     <module name="javax.api"/>
   </dependencies>
-</module>      
+</module>     
+
+######################################################################################################
+
+4. PERSISTENCE:
+
+<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+<jta-data-source>java:/NAME_PROJECT</jta-data-source>
